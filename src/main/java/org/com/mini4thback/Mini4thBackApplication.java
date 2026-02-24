@@ -1,4 +1,4 @@
-package org.example.mini4thback;
+package org.com.mini4thback;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
