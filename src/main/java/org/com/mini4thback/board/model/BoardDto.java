@@ -24,4 +24,17 @@ public class BoardDto {
                     .build();
         }
     }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class List{
+        private String title;
+        private Long author;
+
+        public static BoardDto.List toDto (Board entity){
+            return List.builder().title(entity.getTitle()).author(entity.getAuthor()).build();
+        }
+    }
 }
