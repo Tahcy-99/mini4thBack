@@ -19,7 +19,18 @@ public class BoardController {
     @PostMapping("/board/post")
     public ResponseEntity post(@RequestBody BoardDto.Post dto){
         boardService.post(dto);
-        return ResponseEntity.ok("성공");
+        return ResponseEntity.ok("작성 완료");
+    }
+
+    @PostMapping("/board/edit")
+    public ResponseEntity edit(@RequestBody BoardDto.Edit dto){
+        try {
+            boardService.edit(dto);
+            return ResponseEntity.ok("수정 완료");
+        }
+        catch(NoSuchElementException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("찾으시는 페이지가 존재하지 않습니다 :("+e);
+        }
     }
 
     @GetMapping("/board/list")
@@ -35,7 +46,7 @@ public class BoardController {
             return ResponseEntity.ok().body(detail);
         }
         catch(NoSuchElementException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("찾으시는 페이지가 존재하지 않습니다 :(");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("찾으시는 페이지가 존재하지 않습니다 :("+e);
         }
     }
 

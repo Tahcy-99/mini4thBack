@@ -1,9 +1,7 @@
 package org.com.mini4thback.board.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.checkerframework.checker.units.qual.A;
 
 public class BoardDto {
 
@@ -23,6 +21,17 @@ public class BoardDto {
                     .author(this.author)
                     .build();
         }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class Edit{
+        @Setter
+        private Long idx;
+        private String title;
+        private String content;
     }
 
     @Getter
@@ -57,8 +66,8 @@ public class BoardDto {
             return Detail.builder()
                     .idx(entity.getIdx())
                     .title(entity.getTitle())
-                    .author(entity.getAuthor())
                     .content(entity.getContent())
+                    .author(entity.getAuthor())
                     .build();
         }
     }

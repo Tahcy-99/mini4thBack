@@ -1,5 +1,6 @@
 package org.com.mini4thback.board;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.com.mini4thback.board.model.Board;
 import org.com.mini4thback.board.model.BoardDto;
@@ -20,6 +21,15 @@ public class BoardService {
     public void post(BoardDto.Post dto){
         Board entity = dto.toEntity();
         boardRepository.save(entity);
+    }
+
+    @Transactional
+    public void edit(BoardDto.Edit dto){
+        Board entity = boardRepository.findById(dto.getIdx())
+                .orElseThrow(()->new NoSuchElementException("해당 포스트가 존재하지 않습니다."));
+
+        entity.edit(dto.getTitle(),dto.getContent());
+
     }
 
     public List<BoardDto.List> list(int pageNumber){
