@@ -20,4 +20,9 @@ public class UserDto {
                     .build();
         }
     }
+
+    public static class LoginReq{
+        private String email;
+        private String password;
+    }
 }

@@ -20,4 +20,10 @@ public class UserController {
         return ResponseEntity.ok("성공");
     }
 
+//    @PostMapping("/login")
+//    public ResponseEntity login(@RequestBody UserDto.LoginReq dto){
+//        userService.login(dto);
+//        return ResponseEntity.ok("성공");
+//    }
+
 }
