@@ -54,7 +54,12 @@ public class BoardDto {
         private Long author;
 
         public static BoardDto.Detail toDto (Board entity){
-            return BoardDto.Detail.builder().idx(entity.getIdx()).title(entity.getTitle()).author(entity.getAuthor()).build();
+            return Detail.builder()
+                    .idx(entity.getIdx())
+                    .title(entity.getTitle())
+                    .author(entity.getAuthor())
+                    .content(entity.getContent())
+                    .build();
         }
     }
 }
