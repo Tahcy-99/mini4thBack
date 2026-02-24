@@ -18,4 +18,9 @@ public class Board {
     private String title;
     private String content;
     private Long author;
+
+    public void edit(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
