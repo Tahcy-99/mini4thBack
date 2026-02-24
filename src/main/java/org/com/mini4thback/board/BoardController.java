@@ -23,8 +23,7 @@ public class BoardController {
     }
 
     @PostMapping("/board/edit")
-    public ResponseEntity edit(@RequestBody BoardDto.Edit dto, @RequestParam(name="postId") Long idx){
-        dto.setIdx(idx);
+    public ResponseEntity edit(@RequestBody BoardDto.Edit dto){
         try {
             boardService.edit(dto);
             return ResponseEntity.ok("수정 완료");
