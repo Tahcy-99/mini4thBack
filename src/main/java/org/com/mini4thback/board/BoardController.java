@@ -30,8 +30,8 @@ public class BoardController {
 
     @GetMapping("/board/detail")
     public ResponseEntity detail(@RequestParam(name="postId") Long postId){
-        BoardDto.Detail detail = boardService.detail(postId);
         try {
+            BoardDto.Detail detail = boardService.detail(postId);
             return ResponseEntity.ok().body(detail);
         }
         catch(NoSuchElementException e){
