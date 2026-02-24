@@ -30,11 +30,16 @@ public class BoardDto {
     @NoArgsConstructor
     @Builder
     public static class List{
+        private Long idx;
         private String title;
         private Long author;
 
         public static BoardDto.List toDto (Board entity){
-            return List.builder().title(entity.getTitle()).author(entity.getAuthor()).build();
+            return List.builder()
+                    .idx(entity.getIdx())
+                    .title(entity.getTitle())
+                    .author(entity.getAuthor())
+                    .build();
         }
     }
 }

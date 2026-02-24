@@ -23,7 +23,7 @@ public class BoardService {
     }
 
     public List<BoardDto.List> list(int pageNumber){
-        Pageable listPerPage = PageRequest.of(pageNumber, 10, Sort.by("idx").descending());
+        Pageable listPerPage = PageRequest.of(pageNumber-1, 10, Sort.by("idx").ascending());
         Page<Board> resultEntity = boardRepository.findAll(listPerPage);
         Page<BoardDto.List> resultPage = resultEntity.map(BoardDto.List::toDto);
         return resultPage.getContent();
