@@ -9,8 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +27,11 @@ public class BoardService {
         Page<Board> resultEntity = boardRepository.findAll(listPerPage);
         Page<BoardDto.List> resultPage = resultEntity.map(BoardDto.List::toDto);
         return resultPage.getContent();
+    }
+
+    public BoardDto.Detail detail(Long postId) throws NoSuchElementException{
+        Board entity = boardRepository.findById(postId).orElseThrow();
+        return BoardDto.Detail.toDto(entity);
     }
 
 }
